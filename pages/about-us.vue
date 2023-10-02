@@ -1,6 +1,8 @@
 <template>
     <div>
-<h1>I am About Us Page</h1>
+<h1>About Us Page</h1>
+<button class="btn btn-primary">Test Button</button>
+<HomeTest />
     </div>
 </template>
 

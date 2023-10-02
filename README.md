@@ -73,3 +73,10 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# Deployment in production server
+ npm run generate
+
+ # The a output directory will be built in the project
+ # upload the output directory including files in cpanel. After that keep public folder in root folder.
+ 

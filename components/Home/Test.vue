@@ -1,14 +1,12 @@
 <template>
-    <div>
-<h1>Home Page</h1>
-    </div>
+      <div>
+      <h1>Hello From Component/home</h1>
+
+      </div>
 </template>
 
 <script setup>
-useHead({
-  title: 'Home Page',
-  
-})
+
 </script>
 
 <style lang="scss" scoped>
