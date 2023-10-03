@@ -9,7 +9,7 @@
         <div v-if="isLoading">
           <Loading :title="isLoadingTitle" />
         </div>
-
+          <div v-else>
         <form @submit.prevent="saveStudent">
           <div class="mb-3">
             <label>Name</label>
@@ -35,9 +35,12 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "studentCreate",
   data() {
@@ -56,6 +59,10 @@ export default {
     saveStudent() {
       this.isLoading = true;
       isLoadingTitle = "Saving";
+
+      axios.post().then(rest => {
+
+      });
     },
   },
 };
