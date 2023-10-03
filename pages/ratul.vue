@@ -1,7 +1,6 @@
 <template>
       <div>
-      <h1>Hello From Component/home</h1>
-
+            <h1>Hell Ratul</h1>
       </div>
 </template>
 
