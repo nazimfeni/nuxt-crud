@@ -39,14 +39,14 @@ class StudentController extends Controller
             'name' => 'required|string|max:191',
             'course' => 'required|string|max:191',
             'email' => 'required|email|max:191',
-            'phone' => 'required',
+            'phone' => 'required|digits:10',
 
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
-                'errors' => messages(),
+                'errors' => $validator->messages(),
             ], 422);
 
         } else {
@@ -74,5 +74,10 @@ class StudentController extends Controller
 
             }
         }
+    }
+
+    public function show($id){
+    $student = Student::find();
+
     }
 }
