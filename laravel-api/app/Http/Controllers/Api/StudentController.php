@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
  {
@@ -34,67 +35,55 @@ class StudentController extends Controller
       
 
          $student = Student::create($request->all());
-
-        //  $student = Student::create([
-        //                   'name'=>$request->name,
-        //                   'course'=>$request->course,
-        //                   'email'=>$request->email,
-        //                   'phone'=>$request->phone, 
         
-        //             ]);
-        
-        
-         if($student){
-
-            return response()->json([
-                'status'=>200,
-                'message'=> 'Student created successfully'
-            ],200);
-
-
        
-        // $validator = Validator::make($request->all(), [
-        //     'name'=>'required|string|max:191',
-        //     'course'=>'required|string|max:191',
-        //     'email'=>'required|email|max:191',
-        //     'phone'=>'required|digits:10',
-
+        //  $validated = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'body' => 'required',
         // ]);
 
-        // if($validator->fails()){
-        //        return response()->json([
-        //         'status'=> 422,
-        //         'errors'=>messages()
-        //        ],422);
+        $validator = Validator::make($request->all(), [
+            'name'=>'required|string|max:191',
+            'course'=>'required|string|max:191',
+            'email'=>'required|email|max:191',
+            'phone'=>'required',
 
-        // }
-        // else{
-    //         $student = Student::create([
-    //               'name'=>$request->name,
-    //               'course'=>$request->course,
-    //               'email'=>$request->email,
-    //               'phone'=>$request->phone, 
+        ]);
 
-    //         ]);
+        if($validator->fails()){
+               return response()->json([
+                'status'=> 422,
+                'errors'=>messages()
+               ],422);
 
-        //     if($student){
+        }
+        else{
+            $student = Student::create([
+                  'name'=>$request->name,
+                  'course'=>$request->course,
+                  'email'=>$request->email,
+                  'phone'=>$request->phone, 
 
-        //         return response()->json([
-        //             'status'=>200,
-        //             'message'=> 'Student created successfully'
-        //         ],200);
+            ]);
 
-        //    }
-    //         else{
-    //             return response()->json([
-    //                 'status'=>500,
-    //                 'message'=> 'Something went wrong'
+            if($student){
 
-    //             ],200);
+                return response()->json([
+                    'status'=>200,
+                    'message'=> 'Student created successfully'
+                ],200);
 
-    //         }
-    //     }
+           }
+            else{
+                return response()->json([
+                    'status'=>500,
+                    'message'=> 'Something went wrong'
+
+                ],200);
+
+            }
+        }
       }
-
     }
- }
+    
+ 
