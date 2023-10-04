@@ -31,6 +31,26 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+      
+
+         $student = Student::create($request->all());
+
+        //  $student = Student::create([
+        //                   'name'=>$request->name,
+        //                   'course'=>$request->course,
+        //                   'email'=>$request->email,
+        //                   'phone'=>$request->phone, 
+        
+        //             ]);
+        
+        
+         if($student){
+
+            return response()->json([
+                'status'=>200,
+                'message'=> 'Student created successfully'
+            ],200);
+
 
        
         // $validator = Validator::make($request->all(), [
@@ -49,30 +69,32 @@ class StudentController extends Controller
 
         // }
         // else{
-            $student = Student::create([
-                  'name'=>$request->name,
-                  'course'=>$request->course,
-                  'email'=>$request->email,
-                  'phone'=>$request->phone, 
+    //         $student = Student::create([
+    //               'name'=>$request->name,
+    //               'course'=>$request->course,
+    //               'email'=>$request->email,
+    //               'phone'=>$request->phone, 
 
-            ]);
+    //         ]);
 
-            if($student){
+        //     if($student){
 
-                return response()->json([
-                    'status'=>200,
-                    'message'=> 'Student created successfully'
-                ],200);
+        //         return response()->json([
+        //             'status'=>200,
+        //             'message'=> 'Student created successfully'
+        //         ],200);
 
-            }
-            else{
-                return response()->json([
-                    'status'=>500,
-                    'message'=> 'Something went wrong'
+        //    }
+    //         else{
+    //             return response()->json([
+    //                 'status'=>500,
+    //                 'message'=> 'Something went wrong'
 
-                ],200);
+    //             ],200);
 
-            }
-        }
-     }
-//}
+    //         }
+    //     }
+      }
+
+    }
+ }
